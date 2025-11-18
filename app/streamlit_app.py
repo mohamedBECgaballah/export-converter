@@ -18,17 +18,14 @@ default_export_path = st.sidebar.text_input(
 )
 st.sidebar.markdown("---")
 
-# ---------------- Header (logo + title) ----------------
-header_cols = st.columns([0.6, 8])
-with header_cols[0]:
-    # Logo placeholder: put your file at "static/logo.png" (see below)
-    logo_path = "static/logo.png"
+# ---------------- Header (logo above title) ----------------
+with st.container():
     try:
-        st.image(logo_path, width=120)
+        st.image("static/logo.png", width=180)   # enlarged logo
     except Exception:
         st.write("### Logo")
-with header_cols[1]:
-    st.title("Excel Cleaner & Converter")
+
+    st.markdown("<h1 style='margin-top: -10px;'>Excel Cleaner & Converter</h1>", unsafe_allow_html=True)
 
 # ---------------- Utility: infer types ----------------
 def infer_and_cast(df: pd.DataFrame, datetime_threshold=0.6, numeric_threshold=0.8):
